@@ -62,7 +62,25 @@ public class Traversals {
 		while(stack.size() > 0){
 			System.out.print(stack.pop().value + " ");
 		}			
-	}      
+	}
+	
+	public static void breadthFirstTraversal(Node root) {
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(root);
+
+		while (queue.size() > 0) {
+			Node tempNode = queue.poll();
+			System.out.print(tempNode.value + " ");
+
+			if (tempNode.left != null) {
+				queue.add(tempNode.left);
+			}
+
+			if (tempNode.right != null) {
+				queue.add(tempNode.right);
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		/*	Binary Tree:
@@ -98,6 +116,11 @@ public class Traversals {
 		
 		System.out.print("Postorder: ");
 		postorder(root);
+		
+		System.out.println();
+		
+		System.out.print("Breadth First: ");
+		breadthFirstTraversal(root);		
 	}
 }
 
